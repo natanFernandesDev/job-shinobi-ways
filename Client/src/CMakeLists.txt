@@ -256,6 +256,7 @@ set(SOURCE_FILES
 	client/protocolgame.cpp
 	client/protocolgameparse.cpp
 	client/protocolgamesend.cpp
+	client/paperdoll.cpp
 	client/shadermanager.cpp
 	client/spriteappearances.cpp
 	client/spritemanager.cpp

@@ -546,6 +546,9 @@
     <ClCompile Include="..\src\client\position.cpp">
       <Filter>Source Files\client</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\client\paperdoll.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\framework\const.h">
@@ -1056,6 +1059,9 @@
       <Filter>Header Files\client</Filter>
     </ClInclude>
     <ClInclude Include="..\src\client\gameconfig.h">
+      <Filter>Header Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\client\paperdoll.h">
       <Filter>Header Files\client</Filter>
     </ClInclude>
   </ItemGroup>
