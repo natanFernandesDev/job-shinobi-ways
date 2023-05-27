@@ -251,3 +251,33 @@ bool luavalue_cast(int index, UnjustifiedPoints& unjustifiedPoints)
     unjustifiedPoints.skullTime = g_lua.popInteger();
     return true;
 }
+
+int push_luavalue(const Paperdoll& paperdoll)
+{
+    g_lua.createTable(0, 4);
+    g_lua.pushInteger(paperdoll.getHead());
+    g_lua.setField("head");
+    g_lua.pushInteger(paperdoll.getBody());
+    g_lua.setField("body");
+    g_lua.pushInteger(paperdoll.getLegs());
+    g_lua.setField("legs");
+    g_lua.pushInteger(paperdoll.getFeet());
+    g_lua.setField("feet");
+    return 1;
+}
+
+bool luavalue_cast(int index, Paperdoll& paperdoll)
+{
+    if (!g_lua.isTable(index))
+        return false;
+
+    g_lua.getField("head", index);
+    paperdoll.setHead(g_lua.popInteger());
+    g_lua.getField("body", index);
+    paperdoll.setBody(g_lua.popInteger());
+    g_lua.getField("legs", index);
+    paperdoll.setLegs(g_lua.popInteger());
+    g_lua.getField("feet", index);
+    paperdoll.setFeet(g_lua.popInteger());
+    return true;
+}

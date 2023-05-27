@@ -36,5 +36,6 @@ Module
     - game_unjustifiedpoints
     - game_shaders
     - game_attachedeffects
+    - game_test
   @onLoad: init()
   @onUnload: terminate()

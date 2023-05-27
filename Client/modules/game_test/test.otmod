@@ -1,0 +1,9 @@
+Module
+  name: game_test
+  description: Test developing modules
+  author: Undefined
+  website: 
+  sandboxed: true
+  scripts: [ test ]
+  @onLoad: init()
+  @onUnload: terminate()
