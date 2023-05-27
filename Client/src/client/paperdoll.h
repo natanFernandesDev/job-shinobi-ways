@@ -25,15 +25,6 @@ public:
     ThingType* getLegs() const { return m_legs.type; }
     ThingType* getFeet() const { return m_feet.type; }
 
-    bool operator==(const Paperdoll& other) const
-    {
-        return m_head.value == other.m_head.value &&
-            m_body.value == other.m_body.value &&
-            m_legs.value == other.m_legs.value &&
-            m_feet.value == other.m_feet.value;
-    }
-    bool operator!=(const Paperdoll& other) const { return !(*this == other); }
-
 private:
 
     Paperdoll_t m_head;
