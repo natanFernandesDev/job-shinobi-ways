@@ -131,9 +131,6 @@ void Creature::internalDraw(Point dest, bool isMarked, const Color& color, Light
             if (!isMarked && m_shader)
                 g_drawPool.setShaderProgram(m_shader, m_shaderAction);
 
-            //Test:
-            datType->draw(Point(dest.x + 15, dest.y), 0, m_paperdoll.getHead(), 0, 0, animationPhase, Otc::DrawThingsAndLights, color);
-
             // yPattern => creature addon
             for (int yPattern = 0; yPattern < getNumPatternY(); ++yPattern) {
 
@@ -151,6 +148,22 @@ void Creature::internalDraw(Point dest, bool isMarked, const Color& color, Light
                     datType->draw(dest, SpriteMaskBlue, m_numPatternX, yPattern, m_numPatternZ, animationPhase, Otc::DrawThingsAndLights, m_outfit.getFeetColor());
                     g_drawPool.resetCompositionMode();
                 }
+            }
+
+            if (m_paperdoll.getHead()) {
+                m_paperdoll.getHead()->draw(dest, 0, m_numPatternX, 0, 0, animationPhase, Otc::DrawThingsAndLights, color);
+            }
+
+            if (m_paperdoll.getBody()) {
+                m_paperdoll.getBody()->draw(dest, 0, m_numPatternX, 0, 0, animationPhase, Otc::DrawThingsAndLights, color);
+            }
+
+            if (m_paperdoll.getLegs()) {
+                m_paperdoll.getLegs()->draw(dest, 0, m_numPatternX, 0, 0, animationPhase, Otc::DrawThingsAndLights, color);
+            }
+
+            if (m_paperdoll.getFeet()) {
+                m_paperdoll.getFeet()->draw(dest, 0, m_numPatternX, 0, 0, animationPhase, Otc::DrawThingsAndLights, color);
             }
 
             if (!isMarked && m_shader)
@@ -937,11 +950,3 @@ int Creature::getExactSize(int layer, int xPattern, int yPattern, int zPattern, 
 }
 
 void Creature::setMountShader(const std::string_view name) { m_mountShader = g_shaders.getShader(name); }
-
-void Creature::setPaperdoll(const Paperdoll& paperdoll)
-{
-    if (m_paperdoll == paperdoll)
-        return;
-
-    m_paperdoll = paperdoll;
-}

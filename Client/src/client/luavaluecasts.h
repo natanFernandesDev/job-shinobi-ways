@@ -48,7 +48,3 @@ bool luavalue_cast(int index, UnjustifiedPoints& unjustifiedPoints);
 
 // imbuement
 int push_luavalue(const Imbuement& i);
-
-// paperdoll
-int push_luavalue(const Paperdoll& paperdoll);
-bool luavalue_cast(int index, Paperdoll& paperdoll);

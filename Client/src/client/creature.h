@@ -148,9 +148,6 @@ public:
         }
     }
 
-    Paperdoll getPaperdoll() { return m_paperdoll; }
-    void setPaperdoll(const Paperdoll& paperdoll);
-
 protected:
 
     virtual void onDeath();
