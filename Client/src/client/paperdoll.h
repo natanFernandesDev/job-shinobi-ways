@@ -5,6 +5,11 @@
 
 class Paperdoll
 {
+    struct Paperdoll_t
+    {
+        uint16_t value{ 0 };
+        ThingType* type{ nullptr };
+    };
 
 public:
 
@@ -15,24 +20,24 @@ public:
 
     void reset();
 
-    uint16_t getHead() const { return m_head; }
-    uint16_t getBody() const { return m_body; }
-    uint16_t getLegs() const { return m_legs; }
-    uint16_t getFeet() const { return m_feet; }
+    ThingType* getHead() const { return m_head.type; }
+    ThingType* getBody() const { return m_body.type; }
+    ThingType* getLegs() const { return m_legs.type; }
+    ThingType* getFeet() const { return m_feet.type; }
 
     bool operator==(const Paperdoll& other) const
     {
-        return m_head == other.m_head &&
-            m_body == other.m_body &&
-            m_legs == other.m_legs &&
-            m_feet == other.m_feet;
+        return m_head.value == other.m_head.value &&
+            m_body.value == other.m_body.value &&
+            m_legs.value == other.m_legs.value &&
+            m_feet.value == other.m_feet.value;
     }
     bool operator!=(const Paperdoll& other) const { return !(*this == other); }
 
 private:
 
-    uint16_t m_head{ 0 };
-    uint16_t m_body{ 0 };
-    uint16_t m_legs{ 0 };
-    uint16_t m_feet{ 0 };
+    Paperdoll_t m_head;
+    Paperdoll_t m_body;
+    Paperdoll_t m_legs;
+    Paperdoll_t m_feet;
 };

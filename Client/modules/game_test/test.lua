@@ -10,7 +10,27 @@ function terminate()
     })
 end
 
+function showPaperdoll()
+    local paperdoll = g_game.getLocalPlayer():getPaperdoll()
+    for key, value in pairs(paperdoll) do
+        print(key.." : "..tostring(value))
+    end
+end
+
+function setPaperdoll(key, value)
+    local paperdoll = g_game.getLocalPlayer():getPaperdoll()
+
+    for key,_ in pairs(paperdoll) do
+        if key ~= key then
+            return false
+        end
+    end
+
+    paperdoll[key] = value
+    g_game.getLocalPlayer():setPaperdoll(paperdoll)
+    return true
+end
+
 function test()
-    local player = g_game.getLocalPlayer()
-    print(player:getName())
+    showPaperdoll()
 end

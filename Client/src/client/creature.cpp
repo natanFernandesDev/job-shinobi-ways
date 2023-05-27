@@ -131,8 +131,12 @@ void Creature::internalDraw(Point dest, bool isMarked, const Color& color, Light
             if (!isMarked && m_shader)
                 g_drawPool.setShaderProgram(m_shader, m_shaderAction);
 
+            //Test:
+            datType->draw(Point(dest.x + 15, dest.y), 0, m_paperdoll.getHead(), 0, 0, animationPhase, Otc::DrawThingsAndLights, color);
+
             // yPattern => creature addon
             for (int yPattern = 0; yPattern < getNumPatternY(); ++yPattern) {
+
                 // continue if we dont have this addon
                 if (yPattern > 0 && !(m_outfit.getAddons() & (1 << (yPattern - 1))))
                     continue;
