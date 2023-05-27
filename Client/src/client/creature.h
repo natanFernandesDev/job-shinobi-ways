@@ -28,6 +28,7 @@
 #include "mapview.h"
 #include "outfit.h"
 #include "thing.h"
+#include "paperdoll.h"
 
 struct PreyMonster
 {
@@ -147,6 +148,9 @@ public:
         }
     }
 
+    Paperdoll getPaperdoll() { return m_paperdoll; }
+    void setPaperdoll(const Paperdoll& paperdoll);
+
 protected:
 
     virtual void onDeath();
@@ -185,6 +189,7 @@ private:
 
     Outfit m_outfit;
     Light m_light;
+    Paperdoll m_paperdoll;
 
     uint8_t m_type;
     uint8_t m_healthPercent{ 101 };
