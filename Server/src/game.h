@@ -16,6 +16,7 @@
 #include "npc.h"
 #include "wildcardtree.h"
 #include "quests.h"
+#include "paperdolls.h"
 
 class ServiceManager;
 class Creature;
@@ -494,6 +495,7 @@ class Game
 		Mounts mounts;
 		Raids raids;
 		Quests quests;
+		Paperdolls paperdolls;
 
 		std::forward_list<Item*> toDecayItems;
 

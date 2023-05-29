@@ -109,6 +109,8 @@ void Game::setGameState(GameState_t newState)
 			quests.loadFromXml();
 			mounts.loadFromXml();
 
+			paperdolls.loadFromXml();
+
 			loadMotdNum();
 			loadPlayersRecord();
 			loadAccountStorageValues();
