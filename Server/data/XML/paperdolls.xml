@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <paperdolls>
 
-	<paperdoll itemid="2160" looktype="136">
+	<!-- Female Paperdolls -->
+	<paperdoll type="0" itemid="2494" looktype="138" enabled="yes">
+		<base looktype="146" />
+	</paperdoll>
+	<paperdoll type="0" itemid="2493" looktype="144" enabled="yes">
+		<base looktype="146" />
+	</paperdoll>
+	<paperdoll type="0" itemid="2495" looktype="139" enabled="yes">
+		<base looktype="146" />
+	</paperdoll>
+
+	<!-- Male Paperdolls -->
+	<paperdoll type="1" itemid="2494" looktype="136" enabled="yes">
+		<base looktype="146" />
+	</paperdoll>
+	<paperdoll type="1" itemid="2493" looktype="40" enabled="yes">
 		<base looktype="146" />
 	</paperdoll>
 

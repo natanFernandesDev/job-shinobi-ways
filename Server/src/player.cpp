@@ -2774,6 +2774,14 @@ void Player::addThing(int32_t index, Thing* thing)
 	item->setParent(this);
 	inventory[index] = item;
 
+	//Add paperdoll:
+	if (g_game.paperdolls.isValidSlot(index)) {
+		Paperdoll* paperdoll = g_game.paperdolls.getPaperdollByItemId(getSex(), item->getID());
+		if (paperdoll && paperdoll->baseExists(currentOutfit.lookType)) {
+			g_game.playerChangePaperdoll(getID(), static_cast<slots_t>(index), paperdoll->lookType);
+		}
+	}
+
 	//send to client
 	sendInventoryItem(static_cast<slots_t>(index), item);
 }
@@ -2869,6 +2877,15 @@ void Player::removeThing(Thing* thing, uint32_t count)
 		item->setParent(nullptr);
 		inventory[index] = nullptr;
 	}
+
+	//Remove paperdoll
+	if (g_game.paperdolls.isValidSlot(index)) {
+		Paperdoll* paperdoll = g_game.paperdolls.getPaperdollByItemId(getSex(), item->getID());
+		if (paperdoll && paperdoll->baseExists(currentOutfit.lookType)) {
+			g_game.playerChangePaperdoll(getID(), static_cast<slots_t>(index), 0);
+		}
+	}
+
 }
 
 int32_t Player::getThingIndex(const Thing* thing) const

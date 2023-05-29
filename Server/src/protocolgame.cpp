@@ -2930,6 +2930,19 @@ void ProtocolGame::sendModalWindow(const ModalWindow& modalWindow)
 
 	writeToOutputBuffer(msg);
 }
+void ProtocolGame::sendCreaturePaperdoll(const Creature* creature, slots_t slot, uint16_t lookType)
+{
+	if (!canSee(creature)) {
+		return;
+	}
+
+	NetworkMessage msg;
+	msg.addByte(0x4C);
+	msg.add<uint32_t>(creature->getID());
+	msg.addByte(slot);
+	msg.add<uint16_t>(lookType);
+	writeToOutputBuffer(msg);
+}
 
 ////////////// Add common messages
 void ProtocolGame::AddCreature(NetworkMessage& msg, const Creature* creature, bool known, uint32_t remove)

@@ -11,6 +11,11 @@ struct Paperdoll {
 	uint16_t lookType;
 
 	std::vector<uint16_t> lookTypes;
+
+	bool baseExists(uint16_t looktype) const {
+		return std::find(lookTypes.begin(), lookTypes.end(), looktype) != lookTypes.end();
+	}
+
 };
 
 class Paperdolls
@@ -23,8 +28,10 @@ class Paperdolls
 
 		bool loadFromXml();
 
-		Paperdoll* getPaperdollByItemId(uint16_t itemId);
+		Paperdoll* getPaperdollByItemId(PlayerSex_t sex, uint16_t itemId);
+
+		bool isValidSlot(uint8_t index);
 
 	private:
-		std::vector<Paperdoll> paperdolls;
+		std::vector<Paperdoll> paperdolls[PLAYERSEX_LAST + 1];
 };

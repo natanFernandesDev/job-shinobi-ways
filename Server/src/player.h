@@ -1115,6 +1115,11 @@ class Player final : public Creature, public Cylinder
 				client->writeToOutputBuffer(message);
 			}
 		}
+		void sendCreaturePaperdoll(const Creature* creature, slots_t slot, uint16_t lookType) {
+			if (client) {
+				client->sendCreaturePaperdoll(creature, slot, lookType);
+			}
+		}
 
 		void receivePing() {
 			lastPong = OTSYS_TIME();

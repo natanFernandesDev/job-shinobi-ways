@@ -76,6 +76,7 @@ namespace Proto
         GameServerCreatureShader = 54,
         GameServerMapShader = 55,
         GameServerFloorDescription = 75,
+        GameServerCreaturePaperdoll = 76,
 
         // original tibia ONLY
         GameServerPassiveCooldown = 94,

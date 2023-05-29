@@ -140,6 +140,9 @@ public:
     bool canBeSeen() { return !isInvisible() || isPlayer(); }
     bool isCreature() override { return true; }
 
+    Paperdoll getPaperdoll() { return m_paperdoll; }
+    void setPaperdoll(Paperdoll paperdoll) { m_paperdoll = paperdoll; }
+
     bool isDisabledWalkAnimation() { return m_disableWalkAnimation > 0; }
     void setDisableWalkAnimation(bool v) {
         if (v) ++m_disableWalkAnimation; else {

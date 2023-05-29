@@ -553,6 +553,10 @@ void ProtocolGame::parseMessage(const InputMessagePtr& msg)
                     parseMapShader(msg);
                     break;
 
+                case Proto::GameServerCreaturePaperdoll:
+                    parseCreaturePaperdoll(msg);
+                    break;
+
                 default:
                     throw Exception("unhandled opcode %d", opcode);
                     break;
@@ -2487,6 +2491,34 @@ void ProtocolGame::parseCreatureType(const InputMessagePtr& msg)
         creature->setType(type);
     else
         g_logger.traceError("could not get creature");
+}
+
+void ProtocolGame::parseCreaturePaperdoll(const InputMessagePtr& msg)
+{
+    const uint32_t id = msg->getU32();
+    const uint8_t index = msg->getU8();
+    const uint16_t lookType = msg->getU16();
+
+    const auto& creature = g_map.getCreatureById(id);
+    if (!creature) {
+        g_logger.traceError("could not get creature");
+        return;
+    }
+
+    Paperdoll paperdoll = creature->getPaperdoll();
+
+    Otc::InventorySlot slot = static_cast<Otc::InventorySlot>(index);
+    if (slot == Otc::InventorySlotHead) {
+        paperdoll.setHead(lookType);
+    } else if (slot == Otc::InventorySlotArmor) {
+        paperdoll.setBody(lookType);
+    } else if (slot == Otc::InventorySlotLegs) {
+        paperdoll.setLegs(lookType);
+    } else if (slot == Otc::InventorySlotFeet) {
+        paperdoll.setFeet(lookType);
+    }
+
+    creature->setPaperdoll(paperdoll);
 }
 
 void ProtocolGame::setMapDescription(const InputMessagePtr& msg, int x, int y, int z, int width, int height)

@@ -227,6 +227,8 @@ class ProtocolGame final : public Protocol
 		void sendSpellCooldown(uint8_t spellId, uint32_t time);
 		void sendSpellGroupCooldown(SpellGroup_t groupId, uint32_t time);
 
+		void sendCreaturePaperdoll(const Creature* creature, slots_t slot, uint16_t lookType);
+
 		//tiles
 		void sendMapDescription(const Position& pos);
 

@@ -5790,3 +5790,19 @@ bool Game::reload(ReloadTypes_t reloadType)
 	}
 	return true;
 }
+
+void Game::playerChangePaperdoll(uint32_t playerId, slots_t slot, uint16_t lookType)
+{
+	Player* player = getPlayerByID(playerId);
+	if (!player) {
+		return;
+	}
+
+	//send to clients
+	SpectatorVec spectators;
+	map.getSpectators(spectators, player->getPosition(), true, true);
+	for (Creature* spectator : spectators) {
+		Player* tmpPlayer = spectator->getPlayer();
+		tmpPlayer->sendCreaturePaperdoll(player, slot, lookType);
+	}
+}
