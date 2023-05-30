@@ -225,6 +225,11 @@ class Creature : virtual public Thing
 		const Outfit_t getCurrentOutfit() const {
 			return currentOutfit;
 		}
+
+		const Paperdoll_t getCurrentPaperdoll() const {
+			return currentPaperdoll;
+		}
+
 		void setCurrentOutfit(Outfit_t outfit) {
 			currentOutfit = outfit;
 		}
@@ -511,6 +516,8 @@ class Creature : virtual public Thing
 
 		Outfit_t currentOutfit;
 		Outfit_t defaultOutfit;
+
+		Paperdoll_t currentPaperdoll;
 
 		Position lastPosition;
 		LightInfo internalLight;

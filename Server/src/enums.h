@@ -495,6 +495,13 @@ struct Outfit_t {
 	uint8_t lookAddons = 0;
 };
 
+struct Paperdoll_t {
+	uint16_t head = 0;
+	uint16_t body = 0;
+	uint16_t legs = 0;
+	uint16_t feet = 0;
+};
+
 struct LightInfo {
 	uint8_t level = 0;
 	uint8_t color = 0;

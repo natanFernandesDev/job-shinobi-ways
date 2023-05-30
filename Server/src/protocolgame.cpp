@@ -2972,9 +2972,12 @@ void ProtocolGame::AddCreature(NetworkMessage& msg, const Creature* creature, bo
 
 	if (!creature->isInGhostMode() && !creature->isInvisible()) {
 		AddOutfit(msg, creature->getCurrentOutfit());
+		AddPaperdoll(msg, creature->getCurrentPaperdoll());
 	} else {
 		static Outfit_t outfit;
+		static Paperdoll_t paperdoll;
 		AddOutfit(msg, outfit);
+		AddPaperdoll(msg, paperdoll);
 	}
 
 	LightInfo lightInfo = creature->getCreatureLight();
@@ -3091,6 +3094,14 @@ void ProtocolGame::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit)
 	}
 
 	msg.add<uint16_t>(outfit.lookMount);
+}
+
+void ProtocolGame::AddPaperdoll(NetworkMessage& msg, const Paperdoll_t& paperdoll)
+{
+	msg.add<uint16_t>(paperdoll.head);
+	msg.add<uint16_t>(paperdoll.body);
+	msg.add<uint16_t>(paperdoll.legs);
+	msg.add<uint16_t>(paperdoll.feet);
 }
 
 void ProtocolGame::AddWorldLight(NetworkMessage& msg, LightInfo lightInfo)

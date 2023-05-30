@@ -2641,6 +2641,23 @@ Outfit ProtocolGame::getOutfit(const InputMessagePtr& msg, bool parseMount/* = t
     return outfit;
 }
 
+Paperdoll ProtocolGame::getPaperdoll(const InputMessagePtr& msg) const
+{
+    Paperdoll paperdoll;
+
+    const uint16_t head = msg->getU16();
+    const uint16_t body = msg->getU16();
+    const uint16_t legs = msg->getU16();
+    const uint16_t feet = msg->getU16();
+
+    paperdoll.setHead(head);
+    paperdoll.setBody(body);
+    paperdoll.setLegs(legs);
+    paperdoll.setFeet(feet);
+
+    return paperdoll;
+}
+
 ThingPtr ProtocolGame::getThing(const InputMessagePtr& msg)
 {
     const uint16_t id = msg->getU16();
@@ -2759,6 +2776,7 @@ CreaturePtr ProtocolGame::getCreature(const InputMessagePtr& msg, int type) cons
         const uint8_t healthPercent = msg->getU8();
         const auto direction = static_cast<Otc::Direction>(msg->getU8());
         const Outfit& outfit = getOutfit(msg);
+        const Paperdoll& paperdoll = getPaperdoll(msg);
 
         Light light;
         light.intensity = msg->getU8();
@@ -2852,6 +2870,8 @@ CreaturePtr ProtocolGame::getCreature(const InputMessagePtr& msg, int type) cons
             creature->setMasterId(masterId);
             creature->setShader(shader);
             creature->clearAttachedEffects();
+            creature->setPaperdoll(paperdoll);
+
             for (const auto effectId : attachedEffectList) {
                 const auto& effect = g_attachedEffects.getById(effectId);
                 if (effect)

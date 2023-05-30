@@ -277,6 +277,7 @@ class ProtocolGame final : public Protocol
 		void AddPlayerSkills(NetworkMessage& msg);
 		void AddWorldLight(NetworkMessage& msg, LightInfo lightInfo);
 		void AddCreatureLight(NetworkMessage& msg, const Creature* creature);
+		void AddPaperdoll(NetworkMessage& msg, const Paperdoll_t& paperdoll);
 
 		//tiles
 		static void RemoveTileThing(NetworkMessage& msg, const Position& pos, uint32_t stackpos);

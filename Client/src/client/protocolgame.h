@@ -319,6 +319,7 @@ public:
     int setTileDescription(const InputMessagePtr& msg, Position position);
 
     Outfit getOutfit(const InputMessagePtr& msg, bool parseMount = true) const;
+    Paperdoll getPaperdoll(const InputMessagePtr& msg) const;
     ThingPtr getThing(const InputMessagePtr& msg);
     ThingPtr getMappedThing(const InputMessagePtr& msg) const;
     CreaturePtr getCreature(const InputMessagePtr& msg, int type = 0) const;

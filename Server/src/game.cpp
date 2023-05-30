@@ -5798,6 +5798,16 @@ void Game::playerChangePaperdoll(uint32_t playerId, slots_t slot, uint16_t lookT
 		return;
 	}
 
+	if (slot == CONST_SLOT_HEAD) {
+		player->currentPaperdoll.head = lookType;
+	} else if (slot == CONST_SLOT_ARMOR) {
+		player->currentPaperdoll.body = lookType;
+	} else if (slot == CONST_SLOT_LEGS) {
+		player->currentPaperdoll.legs = lookType;
+	} else if (slot == CONST_SLOT_FEET) {
+		player->currentPaperdoll.feet = lookType;
+	}
+
 	//send to clients
 	SpectatorVec spectators;
 	map.getSpectators(spectators, player->getPosition(), true, true);

@@ -2,14 +2,17 @@
 <paperdolls>
 
 	<!-- Female Paperdolls -->
-	<paperdoll type="0" itemid="2494" looktype="138" enabled="yes">
-		<base looktype="146" />
+	<paperdoll type="0" itemid="2494" looktype="3" enabled="yes">
+		<base looktype="5" />
 	</paperdoll>
-	<paperdoll type="0" itemid="2493" looktype="144" enabled="yes">
-		<base looktype="146" />
+	<paperdoll type="0" itemid="2493" looktype="2" enabled="yes">
+		<base looktype="5" />
 	</paperdoll>
-	<paperdoll type="0" itemid="2495" looktype="139" enabled="yes">
-		<base looktype="146" />
+	<paperdoll type="0" itemid="2495" looktype="4" enabled="yes">
+		<base looktype="5" />
+	</paperdoll>
+	<paperdoll type="0" itemid="2195" looktype="6" enabled="yes">
+		<base looktype="5" />
 	</paperdoll>
 
 	<!-- Male Paperdolls -->
